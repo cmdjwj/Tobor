@@ -9,24 +9,29 @@
 ```
 tobor
 ├── src
-│   ├── bot.ts            # 配置 bot 的基本设置
-│   ├── commands           # 命令处理函数
+│   ├── api
+│   │   └── webhook.ts
+│   ├── bot
 │   │   └── index.ts
-│   ├── config             # 配置设置
+│   ├── commands
 │   │   └── index.ts
-│   ├── handlers           # 事件处理函数
+│   ├── config
 │   │   └── index.ts
-│   ├── middlewares        # 中间件函数
+│   ├── handlers
 │   │   └── index.ts
-│   ├── types              # 自定义类型和接口
+│   ├── middlewares
 │   │   └── index.ts
-│   └── utils              # 工具函数
-│       └── index.ts
-├── .env.example           # 环境变量配置示例文件
-├── .gitignore             # 版本控制忽略文件
-├── package.json           # npm 配置文件
-├── tsconfig.json          # TypeScript 配置文件
-└── README.md              # 项目文档
+│   ├── types
+│   │   └── index.ts
+│   ├── utils
+│   │   └── index.ts
+│   └── index.ts
+├── .env.example
+├── .gitignore
+├── package.json
+├── tsconfig.json
+├── vercel.json
+└── README.md
 ```
 
 ## 安装与使用
@@ -47,5 +52,17 @@ tobor
 
 4. 启动项目：
    ```bash
-   npm start
+   npm start dev
    ```
+
+## 备忘录
+
+设置Webhook：
+`curl "https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<VERCEL_URL>/api/webhook"`
+
+`curl "https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo" `        
+
+## TODO
+
+- [ ] 更新项目结构，完善日志（最好是能在vercel上运行编译好的js文件）
+- [ ] 添加大模型响应（以及权限设置）
