@@ -1,5 +1,5 @@
 import { webhookCallback } from "grammy";
-import { setupBot } from '../bot';
+import { setupBot } from '../src/bot';
 
 const bot = setupBot();
 

@@ -60,9 +60,13 @@ tobor
 设置Webhook：
 `curl "https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<VERCEL_URL>/api/webhook"`
 
-`curl "https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo" `        
+`curl "https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo" `
+
+查看日志：
+`vercel logs tobor.vercel.app`
 
 ## TODO
 
-- [ ] 更新项目结构，完善日志（最好是能在vercel上运行编译好的js文件）
+- [ ] 更新项目结构，完善日志
+- [ ] 自动 curl 设置 Webhook
 - [ ] 添加大模型响应（以及权限设置）
