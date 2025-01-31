@@ -4,6 +4,17 @@ import { logger, errorHandler } from '../middlewares';
 import { commands } from '../commands';
 import { handlers } from '../handlers';
 
+async function setupWebhook(bot: Bot, webhookUrl: string) {
+    try {
+        await bot.api.deleteWebhook();
+        await bot.api.setWebhook(webhookUrl);
+        console.log('Webhook设置成功:', webhookUrl);
+    } catch (error) {
+        console.error('Webhook设置失败:', error);
+        throw error;
+    }
+}
+
 export function setupBot() {
     const env = getEnvConfig();
     const botConfig = getBotConfig();
@@ -33,6 +44,11 @@ export function setupBot() {
     handlers.forEach(({ event, callback }) => {
         bot.on(event, callback);
     });
+
+    // 设置 Webhook
+    if (env.webhook_url) {
+        setupWebhook(bot, env.webhook_url);
+    }
 
     return bot;
 }
