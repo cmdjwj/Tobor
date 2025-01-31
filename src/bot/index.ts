@@ -31,6 +31,25 @@ function setupBot() {
         bot.on(event, callback);
     });
 
+    if (env.webhook_url) {
+        setupWebhook(bot, env.webhook_url);
+    }
+
+    return bot;
+}
+
+async function setupWebhook(bot: Bot, webhookUrl: string) {
+    try {
+        await bot.api.deleteWebhook();
+        await bot.api.setWebhook(webhookUrl);
+        console.log('Webhook设置成功:', webhookUrl);
+    } catch (error) {
+        console.error('Webhook设置失败:', error);
+        throw error;
+    }
+}
+
+export function getBot() {
     return bot;
 }
 
