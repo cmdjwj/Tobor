@@ -1,21 +1,11 @@
-import { Context, NextFunction } from 'grammy';
+import { Middleware } from './types';
+import { loggerMiddleware } from './logger';
+import { errorHandlerMiddleware } from './errorHandler';
 
-// 日志中间件
-export const logger = async (ctx: Context, next: NextFunction) => {
-    console.log(`Received update: ${JSON.stringify(ctx.update)}`);
-    console.log(ctx.message);
-    await next();
-};
-
-// 错误处理中间件
-export const errorHandler = async (ctx: Context, next: NextFunction) => {
-    try {
-        await next();
-    } catch (err) {
-        console.error('错误:', err);
-        await ctx.reply('抱歉，发生了一些错误');
-    }
-};
+export const middlewares: Middleware[] = [
+    loggerMiddleware,
+    errorHandlerMiddleware
+];
 
 // // 权限检查中间件
 // export const checkPermissions = async (ctx: Context, next: NextFunction) => {

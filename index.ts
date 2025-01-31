@@ -1,4 +1,4 @@
-import { getBot } from './src/bot';
+import { getBot } from './src';
 
 getBot().start({
     onStart: (botInfo) => {

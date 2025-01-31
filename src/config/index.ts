@@ -9,7 +9,6 @@ export function getEnvConfig() {
         use_proxy: process.env.USE_PROXY === 'true',
         proxy_host: process.env.PROXY_HOST,
         proxy_port: process.env.PROXY_PORT,
-        webhook_url: process.env.WEBHOOK_URL,
     }
     if (!env.bot_token) {
         throw new Error('BOT_TOKEN 未在环境变量中设置！请在 .env 文件中设置 BOT_TOKEN');
@@ -20,7 +19,7 @@ export function getEnvConfig() {
     return env;
 }
 
-export function getBotConfig() {
+export function buildBotConfig() {
     const env = getEnvConfig();
     let botConfig = {};
     if (env.use_proxy && env.proxy_host && env.proxy_port) {
