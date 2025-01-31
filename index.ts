@@ -1,8 +1,6 @@
-import { setupBot } from './bot';
+import { getBot } from './src/bot';
 
-const bot = setupBot();
-
-bot.start({
+getBot().start({
     onStart: (botInfo) => {
         console.log(`Bot 已启动! 用户名: @${botInfo.username}`);
     },

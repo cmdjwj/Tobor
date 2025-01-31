@@ -2,12 +2,12 @@
   "name": "tobor",
   "version": "1.0.0",
   "description": "cmdjwj's telegram bot",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "build": "tsc",
     "vercel-build": "npm run clean && npm run build",
-    "start": "ts-node src/index.ts",
-    "dev": "ts-node-dev src/index.ts",
+    "start": "ts-node index.ts",
+    "dev": "ts-node-dev index.ts",
     "clean": "rm -rf dist"
   },
   "dependencies": {
