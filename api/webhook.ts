@@ -1,6 +1,4 @@
 import { webhookCallback } from "grammy";
-import { setupBot } from '../src/bot';
+import { getBot } from '../src/bot';
 
-const bot = setupBot();
-
-export default webhookCallback(bot, "http");
+export default webhookCallback(getBot(), "http");

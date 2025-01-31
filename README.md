@@ -8,9 +8,9 @@
 
 ```
 tobor
+├── api
+│   └── webhook.ts
 ├── src
-│   ├── api
-│   │   └── webhook.ts
 │   ├── bot
 │   │   └── index.ts
 │   ├── commands
@@ -23,14 +23,14 @@ tobor
 │   │   └── index.ts
 │   ├── types
 │   │   └── index.ts
-│   ├── utils
-│   │   └── index.ts
-│   └── index.ts
+│   └── utils
+│       └── index.ts
 ├── .env.example
 ├── .gitignore
 ├── package.json
 ├── tsconfig.json
 ├── vercel.json
+├── index.ts
 └── README.md
 ```
 
@@ -52,7 +52,7 @@ tobor
 
 4. 启动项目：
    ```bash
-   npm start dev
+   npm run dev
    ```
 
 ## 备忘录
@@ -60,6 +60,7 @@ tobor
 设置Webhook：
 `curl "https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<VERCEL_URL>/api/webhook"`
 
+查看Webhook信息：
 `curl "https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo" `
 
 查看日志：
@@ -68,5 +69,4 @@ tobor
 ## TODO
 
 - [ ] 更新项目结构，完善日志
-- [ ] 自动 curl 设置 Webhook
 - [ ] 添加大模型响应（以及权限设置）
