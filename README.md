@@ -57,14 +57,10 @@ tobor
 
 ## 备忘录
 
-设置Webhook：
-`curl "https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://<VERCEL_URL>/api/webhook"`
-
-查看Webhook信息：
-`curl "https://api.telegram.org/bot<BOT_TOKEN>/getWebhookInfo" `
+设置Webhook：`npm run set-webhook`
 
 查看日志：
-`vercel logs tobor.vercel.app`
+`vercel logs your-vercel-url`
 
 ## TODO
 
