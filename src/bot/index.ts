@@ -52,7 +52,3 @@ async function setupWebhook(bot: Bot, webhookUrl: string) {
 export function getBot() {
     return bot;
 }
-
-export function getBot() {
-    return bot;
-}
