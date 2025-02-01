@@ -51,10 +51,20 @@ async function getWebhookInfo(): Promise<void> {
     console.log(data);
 }
 
+// 删除webhook
+async function deleteWebhook(): Promise<void> {
+    console.log('正在删除 webhook...');
+    const url = `https://api.telegram.org/bot${process.env.BOT_TOKEN}/deleteWebhook`;
+    const response = await fetch(url, buildFetchOptions());
+    const data = await response.json();
+    console.log(data);
+}
+
 // 主函数
 async function main(): Promise<void> {
     loadEnv();
     checkEnv();
+    await deleteWebhook();
     await setupWebhook();
     await getWebhookInfo();
 }

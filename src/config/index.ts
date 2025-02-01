@@ -20,7 +20,7 @@ export function getEnvConfig() {
     return env;
 }
 
-export function getBotConfig() {
+export function buildBotConfig() {
     const env = getEnvConfig();
     let botConfig = {};
     if (env.use_proxy && env.proxy_host && env.proxy_port) {

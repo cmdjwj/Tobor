@@ -10,21 +10,29 @@
 tobor
 ├── api
 │   └── webhook.ts
+├── scripts
+│   └── webhook.ts
 ├── src
-│   ├── bot
-│   │   └── index.ts
-│   ├── commands
-│   │   └── index.ts
+│   ├── modules
+│   │   ├── commands
+│   │   │   ├── ...
+│   │   │   ├── types.ts
+│   │   │   └── index.ts
+│   │   ├── handlers
+│   │   │   ├── ...
+│   │   │   ├── types.ts
+│   │   │   └── index.ts
+│   │   └── middlewares
+│   │       ├── ...
+│   │       ├── types.ts
+│   │       └── index.ts
 │   ├── config
-│   │   └── index.ts
-│   ├── handlers
-│   │   └── index.ts
-│   ├── middlewares
 │   │   └── index.ts
 │   ├── types
 │   │   └── index.ts
-│   └── utils
-│       └── index.ts
+│   ├── utils
+│   │   └── index.ts
+│   └── index.ts
 ├── .env.example
 ├── .gitignore
 ├── package.json
@@ -59,10 +67,8 @@ tobor
 
 设置Webhook：`npm run set-webhook`
 
-查看日志：
-`vercel logs your-vercel-url`
+查看日志：`vercel logs your-vercel-url`
 
 ## TODO
 
-- [ ] 更新项目结构，完善日志
 - [ ] 添加大模型响应（以及权限设置）
