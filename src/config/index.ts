@@ -6,6 +6,8 @@ config();
 export function getEnvConfig() {
     const env = {
         bot_token: process.env.BOT_TOKEN,
+        admin_id: process.env.ADMIN_ID ? Number(process.env.ADMIN_ID) : undefined,
+        vercel_env: process.env.VERCEL === '1',
         use_proxy: process.env.USE_PROXY === 'true',
         proxy_host: process.env.PROXY_HOST,
         proxy_port: process.env.PROXY_PORT,

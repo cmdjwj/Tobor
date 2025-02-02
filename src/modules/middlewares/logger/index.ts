@@ -6,7 +6,7 @@ export const loggerMiddleware: Middleware = {
     description: '日志记录中间件',
     execute: async (ctx: Context, next: NextFunction) => {
         console.log(`Received update: ${JSON.stringify(ctx.update)}`);
-        console.log(ctx.message);
+        if (ctx.message) console.log(`Received message: ${JSON.stringify(ctx.message)}`);
         await next();
     }
 };
