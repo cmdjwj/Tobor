@@ -1,6 +1,6 @@
 import { Handler } from './types';
-import { exampleHandler } from './example';
+import { chatLlmHandler } from './chat_llm';
 
 export const handlers: Handler[] = [
-    exampleHandler
+    chatLlmHandler
 ];

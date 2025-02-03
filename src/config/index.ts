@@ -11,6 +11,8 @@ export function getEnvConfig() {
         use_proxy: process.env.USE_PROXY === 'true',
         proxy_host: process.env.PROXY_HOST,
         proxy_port: process.env.PROXY_PORT,
+        silicon_api_key: process.env.SILICON_API_KEY,
+        silicon_api_base_url: process.env.SILICON_API_BASE_URL || 'https://api.siliconflow.cn/v1',
     }
     if (!env.bot_token) {
         throw new Error('BOT_TOKEN 未在环境变量中设置！请在 .env 文件中设置 BOT_TOKEN');

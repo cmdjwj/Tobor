@@ -68,7 +68,3 @@ tobor
 设置Webhook：`npm run set-webhook`
 
 查看日志：`vercel logs your-vercel-url`
-
-## TODO
-
-- [ ] 添加大模型响应（以及权限设置）
