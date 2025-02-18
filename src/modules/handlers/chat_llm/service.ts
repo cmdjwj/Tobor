@@ -1,16 +1,16 @@
 import { Context } from "grammy";
 import { getEnvConfig } from "../../../config";
 import { OpenAI } from "openai";
+import { chatHistoryManager } from "./history";
 
 // TODO: R1 思考过程；markdown 格式支持；历史记录；系统 prompt；未发送完时消息被删除
 
-async function makeStreamingRequest(client: OpenAI, message: string) {
+async function makeStreamingRequest(client: OpenAI, userId: number, message: string) {
+    chatHistoryManager.addMessage(userId, "user", message);
     return await client.chat.completions.create({
         model: "deepseek-ai/DeepSeek-V3", // 或 "deepseek-ai/DeepSeek-R1" 
-        messages: [
-            { role: "user", content: message }
-        ],
-        temperature: 0.7,
+        messages: chatHistoryManager.getHistory(userId),
+        temperature: 0.6,
         stream: true
     });
 }
@@ -51,6 +51,7 @@ async function handleStreamingResponse(
 
 export async function chatLlmService(ctx: Context): Promise<void> {
     if (!ctx.chat) return Promise.reject(new Error('无法获取聊天信息'));
+    if (!ctx.from) return Promise.reject(new Error('无法获取用户信息'));
     if (!ctx.message?.text) return Promise.reject(new Error("无法获取文本消息"));
     const config = getEnvConfig();
     if (!config.silicon_api_key) {
@@ -62,9 +63,9 @@ export async function chatLlmService(ctx: Context): Promise<void> {
         baseURL: config.silicon_api_base_url
     });
     try {
-        const completion = await makeStreamingRequest(client, ctx.message.text);
         const initialMessage = await ctx.reply("…");
-        await ctx.replyWithChatAction("typing");
+        ctx.replyWithChatAction("typing");
+        const completion = await makeStreamingRequest(client, ctx.from!.id, ctx.message.text);
         await handleStreamingResponse(ctx, initialMessage, completion);
     } catch (error) {
         console.error("调用 API 出错:", error);
